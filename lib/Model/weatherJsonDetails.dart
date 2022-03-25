@@ -47,14 +47,37 @@ import 'package:flutter/material.dart';
 
 class WeatherJsonDetails {
   String name = '';
+  String discription = '';
   int pressure = 0;
+
+  double temperature = 0; //temp
+  double perceived = 0; // feels_like
+  int humidity = 0; //humidity
+
+  // int windSpeed = 0; //speed
+  // int winddegree = 0; //deg
+
   WeatherJsonDetails(
     this.name,
+    this.discription,
     this.pressure,
+    this.temperature,
+    this.perceived,
+    this.humidity,
+    // this.windSpeed,
+    // this.winddegree,
   );
 
   WeatherJsonDetails.fronJson(Map<String, dynamic> WeatherMap) {
-    this.name = WeatherMap['name'];
-    this.pressure = WeatherMap['main']['pressure'] ?? 0;
+    name = WeatherMap['name'] ?? '';
+
+    //weather details
+    discription = WeatherMap['weather'][0]['main'] ?? '';
+    pressure = WeatherMap['main']['pressure'] ?? 0;
+    temperature = WeatherMap['main']['temp'] - 273.15 ?? 0;
+    perceived = WeatherMap['main']['feels_like'] - 273.15 ?? 0;
+    humidity = WeatherMap['main']['humidity'] ?? 0;
+    // windSpeed = WeatherMap['wind']['speed'] ?? 0;
+    // winddegree = WeatherMap['wind']['deg'] ?? 0;
   }
 }

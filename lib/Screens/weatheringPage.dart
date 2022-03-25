@@ -20,11 +20,18 @@ class _WeatheringPageState extends State<WeatheringPage> {
   }
 
   // String result = '';
-  WeatherJsonDetails result = WeatherJsonDetails('', 0);
+  late WeatherJsonDetails result = WeatherJsonDetails(
+    '',
+    '',
+    0,
+    0,
+    0,
+    0,
+  );
   String image = 'assets/mountains.svg';
 
   //controller
-  TextEditingController _textEditingController = TextEditingController();
+  final TextEditingController _textEditingController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,20 +66,25 @@ class _WeatheringPageState extends State<WeatheringPage> {
                         child: TextField(
                           controller: _textEditingController,
                           decoration: InputDecoration(
-                            fillColor: kcountry,
-                            focusColor: Colors.grey,
+                              fillColor: kcountry,
+                              focusColor: Colors.grey,
+                              suffixIcon: IconButton(
+                                onPressed: () {
+                                  getWeatherData();
+                                },
+                                icon: Icon(Icons.search),
+                              )
+                              // labelText: 'Hello',
+                              // floatingLabelBehavior: FloatingLabelBehavior.never,
 
-                            // labelText: 'Hello',
-                            // floatingLabelBehavior: FloatingLabelBehavior.never,
-
-                            // //border outline input
-                            // enabledBorder: OutlineInputBorder(
-                            //     borderRadius: BorderRadius.circular(10),
-                            //     borderSide: BorderSide.none),
-                            // focusedBorder: OutlineInputBorder(
-                            //     borderRadius: BorderRadius.circular(30),
-                            //     borderSide: BorderSide.none),
-                          ),
+                              // //border outline input
+                              // enabledBorder: OutlineInputBorder(
+                              //     borderRadius: BorderRadius.circular(10),
+                              //     borderSide: BorderSide.none),
+                              // focusedBorder: OutlineInputBorder(
+                              //     borderRadius: BorderRadius.circular(30),
+                              //     borderSide: BorderSide.none),
+                              ),
                         ),
                       ),
                     ),
@@ -108,12 +120,12 @@ class _WeatheringPageState extends State<WeatheringPage> {
                     //     ),
                     //   ),
                     // ),
-                    SizedBox(
+                    const SizedBox(
                       height: 180,
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width,
-                      height: 700,
+                      height: 900,
                       child: Column(
                         children: [
                           Row(
@@ -137,47 +149,61 @@ class _WeatheringPageState extends State<WeatheringPage> {
                             height: 20,
                           ),
                           WeatherDetails(
-                              title: 'Temperature',
+                              title: 'Name',
                               details: result.name,
                               image: 'assets/cloudy.png'),
                           const SizedBox(
                             height: 20,
                           ),
                           WeatherDetails(
-                              title: 'Temperature',
-                              details: result.name,
+                              title: 'Discription',
+                              details: result.discription,
+                              image: 'assets/cloudy.png'),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          WeatherDetails(
+                              title: 'Pressure',
+                              details: result.pressure.toString(),
                               image: 'assets/cloudy.png'),
                           const SizedBox(
                             height: 20,
                           ),
                           WeatherDetails(
                               title: 'Temperature',
-                              details: result.pressure.toStringAsFixed(2),
+                              details: result.temperature.toStringAsFixed(2),
                               image: 'assets/cloudy.png'),
                           const SizedBox(
                             height: 20,
                           ),
                           WeatherDetails(
-                              title: 'Temperature',
-                              details: result.pressure.toStringAsFixed(2),
+                              title: 'Preceived',
+                              details: result.perceived.toStringAsFixed(2),
                               image: 'assets/cloudy.png'),
                           const SizedBox(
                             height: 20,
                           ),
                           WeatherDetails(
-                              title: 'Temperature',
-                              details: result.pressure.toStringAsFixed(2),
+                              title: 'Humidity',
+                              details: result.humidity.toString(),
                               image: 'assets/cloudy.png'),
                           const SizedBox(
                             height: 20,
                           ),
-                          WeatherDetails(
-                              title: 'Temperature',
-                              details: result.pressure.toStringAsFixed(2),
-                              image: 'assets/cloudy.png'),
-                          const SizedBox(
-                            height: 20,
-                          ),
+                          // WeatherDetails(
+                          //     title: 'Wind Speed',
+                          //     details: result.windSpeed.toStringAsFixed(2),
+                          //     image: 'assets/cloudy.png'),
+                          // const SizedBox(
+                          //   height: 20,
+                          // ),
+                          // WeatherDetails(
+                          //     title: 'Degree',
+                          //     details: result.winddegree.toStringAsFixed(2),
+                          //     image: 'assets/cloudy.png'),
+                          // const SizedBox(
+                          //   height: 20,
+                          // ),
                         ],
                       ),
                     ),

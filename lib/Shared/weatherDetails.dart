@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../styles/constants.dart';
 
-
 class WeatherDetails extends StatelessWidget {
   String title = '';
   String details = '';
@@ -29,22 +28,26 @@ class WeatherDetails extends StatelessWidget {
           alignment: Alignment.centerLeft,
           child: Row(
             children: [
-              Text(
-                title,
-                style: const TextStyle(
-                    color: Colors.black, fontWeight: FontWeight.bold),
+              Expanded(
+                child: Text(
+                  title,
+                  style: const TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.bold),
+                ),
               ),
-              const Spacer(),
-              Text(
-                details,
-                style: TextStyle(color: kcountry),
+              Expanded(
+                child: Text(
+                  details,
+                  style: TextStyle(color: kcountry),
+                ),
               ),
-              const Spacer(),
-              Container(
-                width: 50,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(image),
+              Expanded(
+                child: Container(
+                  width: 50,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(image),
+                    ),
                   ),
                 ),
               )
