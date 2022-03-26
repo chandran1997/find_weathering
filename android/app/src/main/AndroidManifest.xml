@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.find_weathering">
+    package="com.zechariah.climeteout_cloud">
    <application
-        android:label="find_weathering"
+        android:label="Climeteout Cloud"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
@@ -30,5 +30,14 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+
+             <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-6978220746820492~1458614805"/> 
+
+            <!-- test ads appId      android:value="ca-app-pub-3940256099942544~3347511713"
+                                     banner ads - ca-app-pub-3940256099942544/6300978111   -->
+
+
     </application>
 </manifest>
